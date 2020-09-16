@@ -48,11 +48,11 @@ class MlflowDataSet(AbstractVersionedDataSet):
                     mlflow_client = MlflowClient()
                     mlflow_client.log_artifact(
                         run_id=self.run_id,
-                        local_path=local_path,
-                        artifact_path=self.artifact_path,
+                        local_path=str(local_path),
+                        artifact_path=str(self.artifact_path),
                     )
                 else:
-                    mlflow.log_artifact(local_path, self.artifact_path)
+                    mlflow.log_artifact(str(local_path), str(self.artifact_path))
 
         # rename the class
         parent_name = data_set.__name__
